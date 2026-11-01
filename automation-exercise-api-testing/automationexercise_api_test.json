@@ -1,0 +1,604 @@
+{
+  "info": {
+    "_postman_id": "ce52ab30-63b3-4cf7-b1ce-a3d49e3be8f8",
+    "name": "AutomationExercise接口测试",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59102949",
+    "_collection_link": "https://go.postman.co/collection/59102949-ce52ab30-63b3-4cf7-b1ce-a3d49e3be8f8?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "搜索商品_top关键词_正常流",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"状态码是 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"业务返回码 responseCode 是 200\", function () {\r",
+              "    var json = pm.response.json();\r",
+              "    pm.expect(json.responseCode).to.eql(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "search_product",
+              "value": "top",
+              "type": "text",
+              "uuid": "16c36190-0caf-4911-8872-a3bc60aa5eea"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/searchProduct?search_product=top",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "searchProduct"
+          ],
+          "query": [
+            {
+              "key": "search_product",
+              "value": "top"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "搜索商品_空关键词_异常流",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "\r",
+              "pm.test(\"HTTP 状态码是 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"业务返回码 responseCode 是 400\", function () {\r",
+              "    var json = pm.response.json();\r",
+              "    pm.expect(json.responseCode).to.eql(400);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/searchProduct",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "searchProduct"
+          ],
+          "query": [
+            {
+              "key": "search_product",
+              "value": "top",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "注册用户_邮箱已存在_异常流",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"HTTP 状态码是 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"重复注册，业务码是 400\", function () {\r",
+              "    var json = pm.response.json();\r",
+              "    pm.expect(json.responseCode).to.eql(400);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "charlie",
+              "type": "text",
+              "uuid": "f8fb83f2-76db-48d0-819c-518c61a76641"
+            },
+            {
+              "key": "email",
+              "value": "charlie_test_7777@test.com",
+              "type": "text",
+              "uuid": "a73cce6e-98c2-4f97-8cce-11b0822d8ddf"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "text",
+              "uuid": "608f9b24-6713-46f8-b882-ff55b1a6d9ce"
+            },
+            {
+              "key": "title",
+              "value": "Mr",
+              "type": "text",
+              "uuid": "b568e458-59a7-4599-975e-a44531696af9"
+            },
+            {
+              "key": "birth_date",
+              "value": "1",
+              "type": "text",
+              "uuid": "6d7b6d9d-715d-4bb5-81b5-6d51af0f2337"
+            },
+            {
+              "key": "birth_month",
+              "value": "1",
+              "type": "text",
+              "uuid": "08fc0047-bcd4-47ba-ac39-7aebd1c5ed3b"
+            },
+            {
+              "key": "birth_year",
+              "value": "2000",
+              "type": "text",
+              "uuid": "0f119f06-0c82-43f1-b0ef-f0846ecd901c"
+            },
+            {
+              "key": "firstname",
+              "value": "charlie",
+              "type": "text",
+              "uuid": "6c814b2e-ba2a-4eb8-a1bb-f8212270f0f0"
+            },
+            {
+              "key": "lastname",
+              "value": "test",
+              "type": "text",
+              "uuid": "ba3acef7-7797-45d8-9d13-c760b44c25db"
+            },
+            {
+              "key": "company",
+              "value": "mycompany",
+              "type": "text",
+              "uuid": "7d8b0fea-d4ca-4cc2-81c9-cabcca793f94"
+            },
+            {
+              "key": "address1",
+              "value": "beijing road 123",
+              "type": "text",
+              "uuid": "2b0b8c6b-92d8-45c5-a8ef-1aa4eae7e5e7"
+            },
+            {
+              "key": "address2",
+              "value": "",
+              "type": "text",
+              "uuid": "9063876c-682a-424f-b3a0-1e6e4ca5d4d7"
+            },
+            {
+              "key": "country",
+              "value": "India",
+              "type": "text",
+              "uuid": "57b072f6-128c-449f-b743-6673e61c58e5"
+            },
+            {
+              "key": "zipcode",
+              "value": "100000",
+              "type": "text",
+              "uuid": "1409050a-85b4-4490-a079-8439217ff480"
+            },
+            {
+              "key": "state",
+              "value": "Delhi",
+              "type": "text",
+              "uuid": "1d3ab248-fa2f-4e77-addb-55f3deb3f7be"
+            },
+            {
+              "key": "city",
+              "value": "Delhi",
+              "type": "text",
+              "uuid": "f15e1126-1dad-4444-93ae-ed762c63d88d"
+            },
+            {
+              "key": "mobile_number",
+              "value": "13800138000",
+              "type": "text",
+              "uuid": "babed15c-0ab4-46fe-a266-c0c2b002084b"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/createAccount",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "createAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "登录_正确账号密码_正常流",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"HTTP 状态码是 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"登录成功，业务码是 200\", function () {\r",
+              "    var json = pm.response.json();\r",
+              "    pm.expect(json.responseCode).to.eql(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "charlie_test_7777@test.com",
+              "type": "text",
+              "uuid": "7805139a-89ea-4509-94d4-eac13a07c2ec"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "text",
+              "uuid": "434a0814-6e86-402b-b74e-b86cb72c9118"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "登录_缺email参数_异常流",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"HTTP 状态码是 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"缺 email 参数，业务码是 400\", function () {\r",
+              "    var json = pm.response.json();\r",
+              "    pm.expect(json.responseCode).to.eql(400);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "charlie_test_6666@test.com",
+              "type": "text",
+              "uuid": "7805139a-89ea-4509-94d4-eac13a07c2ec",
+              "disabled": true
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "text",
+              "uuid": "434a0814-6e86-402b-b74e-b86cb72c9118"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "登录_错误密码_异常流",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"HTTP 状态码是 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"密码错误，业务码是 404\", function () {\r",
+              "    var json = pm.response.json();\r",
+              "    pm.expect(json.responseCode).to.eql(404);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "charlie_test_7777@test.com",
+              "type": "text",
+              "uuid": "7805139a-89ea-4509-94d4-eac13a07c2ec"
+            },
+            {
+              "key": "password",
+              "value": "wrongpass123",
+              "type": "text",
+              "uuid": "434a0814-6e86-402b-b74e-b86cb72c9118"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "更新用户资料_正常流",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 状态码是 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"更新成功，业务码是 400\", function () {\r\n    var json = pm.response.json();\r\n    pm.expect(json.responseCode).to.eql(400);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "charlie",
+              "type": "text"
+            },
+            {
+              "key": "email",
+              "value": "charlie_test_7777@test.com",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "text"
+            },
+            {
+              "key": "title",
+              "value": "Mr",
+              "type": "text"
+            },
+            {
+              "key": "birth_date",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "birth_month",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "birth_year",
+              "value": "2000",
+              "type": "text"
+            },
+            {
+              "key": "firstname",
+              "value": "charlie_v2",
+              "type": "text"
+            },
+            {
+              "key": "lastname",
+              "value": "test",
+              "type": "text"
+            },
+            {
+              "key": "company",
+              "value": "mycompany",
+              "type": "text"
+            },
+            {
+              "key": "address1",
+              "value": "beijing road 123",
+              "type": "text"
+            },
+            {
+              "key": "address2",
+              "value": "",
+              "type": "text"
+            },
+            {
+              "key": "country",
+              "value": "India",
+              "type": "text"
+            },
+            {
+              "key": "zipcode",
+              "value": "100000",
+              "type": "text"
+            },
+            {
+              "key": "state",
+              "value": "Delhi",
+              "type": "text"
+            },
+            {
+              "key": "city",
+              "value": "Delhi",
+              "type": "text"
+            },
+            {
+              "key": "mobile_number\t",
+              "value": "13800138000",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/createAccount",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "createAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "查询用户详情_自己账号_正常流",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"状态码是 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"业务返回码是 200\", function () {\r\n    var json = pm.response.json();\r\n    pm.expect(json.responseCode).to.eql(200);\r\n});\r\n\r\npm.test(\"firstname 是 charlie_v2（更新后验证）\", function () {\r\n    var json = pm.response.json();\r\n    pm.expect(json.user.first_name).to.eql(\"charlie\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/getUserDetailByEmail?email=charlie_test_7777@test.com",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "getUserDetailByEmail"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "charlie_test_7777@test.com"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

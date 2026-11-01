@@ -1,0 +1,5 @@
+# 测试工程依赖
+requests>=2.31
+pytest>=7.4
+pytest-html>=4.0
+openpyxl>=3.1
